@@ -1,8 +1,10 @@
-package br.com.dio.lab.banco.digital.oo.core;
+package br.com.dio.lab.banco.digital.oo.domain.model;
 
-import br.com.dio.lab.banco.digital.oo.domains.Cliente;
-import br.com.dio.lab.banco.digital.oo.interfaces.IConta;
+import br.com.dio.lab.banco.digital.oo.domain.ICartao;
+import br.com.dio.lab.banco.digital.oo.domain.IConta;
+import br.com.dio.lab.banco.digital.oo.domain.constants.TipoConta;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.logging.Logger;
 
@@ -15,32 +17,51 @@ public abstract class Conta implements IConta {
 
     private static int sequencial = 1;
 
+    protected final Cliente cliente;
+
+    @Setter
+    protected TipoConta tipoConta;
+
     protected final int agencia;
 
     protected final int numero;
 
     protected double saldo;
 
-    protected final Cliente cliente;
+    protected ICartao cartao;
 
     protected Conta(final Cliente cliente) {
-        this.agencia = Conta.AGENCIA_PADRAO;
+        this.agencia = AGENCIA_PADRAO;
         this.numero = sequencial++;
         this.cliente = cliente;
     }
 
     @Override
     public void sacar(double valor) {
+        if (this.saldo < valor) {
+            LOGGER.info("Saldo insuficiente! Não foi possível realizar o saque.");
+            return;
+        }
+
         saldo -= valor;
     }
 
     @Override
     public void depositar(double valor) {
+        if (valor <= 0d) {
+            return;
+        }
+
         saldo += valor;
     }
 
     @Override
     public void transferir(double valor, IConta contaDestino) {
+        if (this.saldo < valor) {
+            LOGGER.info("Saldo insuficiente! Não foi possível realizar a transferência.");
+            return;
+        }
+
         this.sacar(valor);
         contaDestino.depositar(valor);
     }
@@ -55,6 +76,16 @@ public abstract class Conta implements IConta {
         LOGGER.info(agenciaMensagem);
         LOGGER.info(numeroMensagem);
         LOGGER.info(saldoMensagem);
+    }
+
+    @Override
+    public String toString() {
+        return "Conta {" +
+                "agencia=" + agencia +
+                ", numero=" + numero +
+                ", saldo=" + saldo +
+                ", cliente=" + cliente +
+                '}';
     }
 
 }

@@ -1,4 +1,4 @@
-package br.com.dio.lab.banco.digital.oo.interfaces;
+package br.com.dio.lab.banco.digital.oo.domain;
 
 public interface IConta {
 

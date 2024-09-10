@@ -1,10 +1,6 @@
 package br.com.dio.lab.banco.digital.oo;
 
-import br.com.dio.lab.banco.digital.oo.domains.Banco;
-import br.com.dio.lab.banco.digital.oo.domains.Cliente;
-import br.com.dio.lab.banco.digital.oo.domains.ContaCorrente;
-import br.com.dio.lab.banco.digital.oo.domains.ContaPoupanca;
-import br.com.dio.lab.banco.digital.oo.core.Conta;
+import br.com.dio.lab.banco.digital.oo.domain.model.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -24,13 +20,14 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Cliente venilton = new Cliente("Venilton", "1346846494");
+        Cliente venilton = new Cliente("Venilton", "584.738.820-91");
 
         Conta cc = new ContaCorrente(venilton);
         Conta poupanca = new ContaPoupanca(venilton);
 
         cc.depositar(100);
         cc.transferir(100, poupanca);
+        ((ContaCorrente) cc).consultarPropostasEmprestimoDisponivel();
 
         cc.imprimirExtrato();
         poupanca.imprimirExtrato();

@@ -1,6 +1,5 @@
-package br.com.dio.lab.banco.digital.oo.domains;
+package br.com.dio.lab.banco.digital.oo.domain.model;
 
-import br.com.dio.lab.banco.digital.oo.core.Conta;
 import lombok.Data;
 
 import java.util.List;
