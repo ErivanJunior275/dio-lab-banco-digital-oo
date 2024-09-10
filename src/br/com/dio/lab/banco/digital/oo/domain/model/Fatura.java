@@ -43,7 +43,7 @@ public final class Fatura {
     private void atualizarValorTotalFatura() {
         Optional<Double> valorTotalFatura = this.transacoes.stream().map(Transacao::getValor).reduce(Double::sum);
 
-        this.valorTotal = valorTotalFatura.orElseGet(() -> 0.00d);
+        this.valorTotal = valorTotalFatura.orElse(Double.MIN_VALUE);
     }
 
 }

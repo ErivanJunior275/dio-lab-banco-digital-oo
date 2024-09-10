@@ -20,7 +20,7 @@ public abstract class Conta implements IConta {
     protected final Cliente cliente;
 
     @Setter
-    protected TipoConta tipoConta;
+    private TipoConta tipoConta;
 
     protected final int agencia;
 
@@ -85,6 +85,7 @@ public abstract class Conta implements IConta {
                 ", numero=" + numero +
                 ", saldo=" + saldo +
                 ", cliente=" + cliente +
+                ", tipoConta=" + tipoConta +
                 '}';
     }
 

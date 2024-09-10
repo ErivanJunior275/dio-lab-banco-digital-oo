@@ -3,8 +3,6 @@ package br.com.dio.lab.banco.digital.oo.domain.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Objects;
-
 @Getter
 @Setter
 public final class CartaoCredito extends Cartao {
@@ -35,21 +33,6 @@ public final class CartaoCredito extends Cartao {
         }
 
         fatura.debitarValorFatura(valor);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Cartao cartao = (Cartao) o;
-        return Objects.equals(numeroCartao, cartao.numeroCartao)
-                && Objects.equals(nomeTitular, cartao.nomeTitular)
-                && Objects.equals(validade, cartao.validade);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(numeroCartao, nomeTitular, validade, limite, fatura);
     }
 
     @Override

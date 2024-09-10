@@ -1,5 +1,8 @@
 package br.com.dio.lab.banco.digital.oo.domain.constants;
 
+import lombok.Getter;
+
+@Getter
 public enum TipoConta {
 
     CONTA_CORRENTE("Conta Corrente"),
@@ -9,10 +12,6 @@ public enum TipoConta {
 
     TipoConta(String descricao) {
         this.descricao = descricao;
-    }
-
-    public String getDescricao() {
-        return descricao;
     }
 
 }
