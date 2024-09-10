@@ -1,29 +1,23 @@
 package br.com.dio.lab.banco.digital.oo.domains;
 
-import br.com.dio.lab.banco.digital.oo.domains.core.Conta;
+import br.com.dio.lab.banco.digital.oo.core.Conta;
+import lombok.Data;
 
 import java.util.List;
+import java.util.logging.Logger;
 
+@Data
 public class Banco {
 
-    private String nome;
+    private static final Logger LOGGER = Logger.getLogger("BancoDigitalOOLogger");
+
+    private static final String NOME = "Banco Digital Orientado à Objeto";
 
     private List<Conta> contas;
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public List<Conta> getContas() {
-        return contas;
-    }
-
-    public void setContas(List<Conta> contas) {
-        this.contas = contas;
+    public void listarNomeClientes() {
+        LOGGER.info("=== Lista de clientes ===");
+        contas.stream().map(Conta::getCliente).map(Cliente::getNome).distinct().forEach(LOGGER::info);
     }
 
 }

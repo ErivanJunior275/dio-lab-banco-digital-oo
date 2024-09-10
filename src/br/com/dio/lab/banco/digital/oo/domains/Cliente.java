@@ -1,15 +1,14 @@
 package br.com.dio.lab.banco.digital.oo.domains;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+@Getter
 public class Cliente {
 
     private final String nome;
 
-    public Cliente(String nome) {
-        this.nome = nome;
-    }
-
-    public String getNome() {
-        return nome;
-    }
+    private final String documento;
 
 }

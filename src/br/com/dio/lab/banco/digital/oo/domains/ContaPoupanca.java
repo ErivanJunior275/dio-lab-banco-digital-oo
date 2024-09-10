@@ -1,6 +1,6 @@
 package br.com.dio.lab.banco.digital.oo.domains;
 
-import br.com.dio.lab.banco.digital.oo.domains.core.Conta;
+import br.com.dio.lab.banco.digital.oo.core.Conta;
 
 public final class ContaPoupanca extends Conta {
 
@@ -10,7 +10,7 @@ public final class ContaPoupanca extends Conta {
 
     @Override
     public void imprimirExtrato() {
-        System.out.println("=== Extrato br.com.dio.lab.banco.digital.oo.domains.core.Conta Poupança ===");
+        LOGGER.info("=== Extrato Conta Poupança ===");
         super.imprimirInfosComuns();
     }
 
